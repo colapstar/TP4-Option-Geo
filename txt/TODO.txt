@@ -1,0 +1,2 @@
+1) possibiliter d'ajouter des courves verticales
+2) possibiliter de deplacer les points de controles
