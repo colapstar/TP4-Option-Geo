@@ -1,2 +1,4 @@
 1) possibiliter d'ajouter des courves verticales
 2) possibiliter de deplacer les points de controles
+3) on creer classe courbe bezier qui herite de classe courbe de meme maniere que classe horizontale herite de classe courbe
+4) on creer 4 points de controles et on calcule T de 3 maniere differentes: Calcul matriciel/Forme développée/Algorithme de De Casteljau
