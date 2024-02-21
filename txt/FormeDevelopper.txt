@@ -1,18 +1,20 @@
-import numpy as np
-import matplotlib.pyplot as plt
+class FormeDeveloppee(Courbe):
+    """ Classe pour dessiner une courbe de Bézier en utilisant la forme développée. """
 
-# Points de contrôle
-P0, P1, P2, P3 = np.array([0, 0]), np.array([1, 2]), np.array([3, 3]), np.array([4, 0])
+    def dessinerPoints(self, dessinerPoint):
+        """ Dessine la courbe de Bézier en utilisant la forme développée. """
+        if len(self.controles) == 4:
+            for t in self.generate_t_values():
+                x, y = self.calculate_bezier_point(t)
+                dessinerPoint((x, y))
 
-# Fonction pour calculer un point sur la courbe de Bézier
-def bezier_cubic(t, P0, P1, P2, P3):
-    return (1-t)**3 * P0 + 3*t*(1-t)**2 * P1 + 3*t**2*(1-t) * P2 + t**3 * P3
+    def calculate_bezier_point(self, t):
+        """ Calcule un point sur la courbe de Bézier pour une valeur de t donnée. """
+        P0, P1, P2, P3 = self.controles
+        x = (1-t)**3 * P0[0] + 3*t*(1-t)**2 * P1[0] + 3*t**2*(1-t) * P2[0] + t**3 * P3[0]
+        y = (1-t)**3 * P0[1] + 3*t*(1-t)**2 * P1[1] + 3*t**2*(1-t) * P2[1] + t**3 * P3[1]
+        return x, y
 
-# Génération de points sur la courbe
-t_values = np.linspace(0, 1, 100)
-curve_points = np.array([bezier_cubic(t, P0, P1, P2, P3) for t in t_values])
-
-# Tracé de la courbe
-plt.plot(curve_points[:,0], curve_points[:,1], 'r-') # Courbe de Bézier
-plt.plot([P0[0], P1[0], P2[0], P3[0]], [P0[1], P1[1], P2[1], P3[1]], 'bo-') # Lignes entre les points de contrôle
-plt.show()
+    def generate_t_values(self, num_points=100):
+        """ Génère une liste de valeurs de t pour tracer la courbe. """
+        return [i / (num_points - 1) for i in range(num_points)]

@@ -25,3 +25,10 @@ class ControleurCourbes(object):
         horizontale = Modele.Horizontale()
         self.ajouterCourbe(horizontale)
         return horizontale.ajouterControle
+    
+    def nouvelleFormeDeveloppee(self):
+        """ Ajoute une nouvelle forme développée initialement vide.
+        Retourne une fonction permettant d'ajouter les points de contrôle. """
+        formeDeveloppee = Modele.FormeDeveloppee()  # Assurez-vous que FormeDeveloppee est définie dans Modele
+        self.ajouterCourbe(formeDeveloppee)
+        return formeDeveloppee.ajouterControle

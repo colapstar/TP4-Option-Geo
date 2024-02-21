@@ -1,4 +1,18 @@
-1) possibiliter d'ajouter des courves verticales
-2) possibiliter de deplacer les points de controles
-3) on creer classe courbe bezier qui herite de classe courbe de meme maniere que classe horizontale herite de classe courbe
-4) on creer 4 points de controles et on calcule T de 3 maniere differentes: Calcul matriciel/Forme développée/Algorithme de De Casteljau
+1) Possibiliter de déplacer les points de controles
+2) Ajouter une methode de temps doit être affichée pour chaque approche (en console ou dans l'interface). 
+3) On creer classe (courbe bezier nom methode) qui herite de classe courbe de meme maniere que classe horizontale herite de classe courbe
+4) On creer 4 points de controles et on calcule T de 3 maniere differentes: Calcul matriciel/Forme développée/Algorithme de De Casteljau
+puis dans l'outil de creation de courbe on donne la possibiliter de choix pour chacune des differentes methodes.
+5) on doit pouvoir creer plusieurs courbes en meme temps sur l'outil de dessin, et les points de controles pour chacunes des differentes methodes doivent avoir des couleurs differentes
+
+
+infos:
+1) si les points sont trop separer il n'y auras pas forcement de courbe tracer, c'est normal.
+2) lors de la creation de courbe de bézier as l'aide de calcul matriciel, les valeurs de la matrice sont fixer 
+selon le nombre de points chosis et sont universel
+3) lors de la création de courbe de bézier as l'aide de forme développée on calcule la courbe as l'aide de la valeur de t ou t varie entre 0 et 1
+4) Lors de la création de courbe de bézier as l'aide de la méthode de Castlejeau on divise récursivement les points de controles
+jusqu'à ce que la distance entre ces points soit suffisamment petite, à ce moment-là, le point sur la courbe peut être approximé avec une grande précision
+5) t = distance entre les points
+6) avec des valeurs de t faible ou moyenne on ne verras pas forcement de difference entre les temps d'execution pour les differentes méthodes
+pour voir une difference relativement significative il faudras donc augmenter de maniere elever la valeur de t pour les tests.

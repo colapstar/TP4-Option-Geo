@@ -36,6 +36,10 @@ class VueCourbes(object):
     def callbackHorizontale(self):
         """ Initialise l'outils courant pour ajouter d'une nouvelle horizontale. """
         self.outilsCourant = self.controleur.nouvelleHorizontale()
+        
+    def callbackFormeDeveloppee(self):
+        """ Initialise l'outil courant pour ajouter une nouvelle courbe de Bézier avec la forme développée. """
+        self.outilsCourant = self.controleur.nouvelleFormeDeveloppee()    
 
     def majAffichage(self):
         """ Met a jour l'affichage.. """
@@ -66,6 +70,7 @@ class VueCourbes(object):
         toolsmenu = tkinter.Menu(menu)
         menu.add_cascade(label="Outils", menu=toolsmenu)
         toolsmenu.add_command(label="Ajouter une horizontale", command=self.callbackHorizontale)
+        toolsmenu.add_command(label="Ajouter une forme développée", command=self.callbackFormeDeveloppee)
         # Canvas : widget pour le dessin dans la fenetre principale
         self.canvas = tkinter.Canvas(fenetre, width=self.largeur, height=self.hauteur, bg='white')
         self.canvas.bind("<Button-1>", self.callbackButton1)
