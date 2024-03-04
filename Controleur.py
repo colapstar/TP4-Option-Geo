@@ -37,4 +37,11 @@ class ControleurCourbes(object):
         calculMatriciel = Modele.CalculMatriciel()
         self.ajouterCourbe(calculMatriciel)
         return calculMatriciel.ajouterControle
+    
+    def nouvelleAlgorithmeDeDeCasteljau(self):
+        algorithmeDeDeCasteljau = Modele.AlgorithmeDeDeCasteljau()
+        self.ajouterCourbe(algorithmeDeDeCasteljau)
+        return algorithmeDeDeCasteljau.ajouterControle
+
+
 
