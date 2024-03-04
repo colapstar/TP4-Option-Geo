@@ -43,7 +43,11 @@ class VueCourbes(object):
         
     def callbackCalculMatriciel(self):
         """ Initialise l'outil courant pour ajouter une nouvelle courbe de Bézier utilisant le calcul matriciel. """
-        self.outilsCourant = self.controleur.nouvelleCalculMatriciel()       
+        self.outilsCourant = self.controleur.nouvelleCalculMatriciel() 
+        
+    def callbackAlgorithmeDeDeCasteljau(self):
+        """ Initialise l'outil courant pour ajouter une nouvelle courbe de Bézier avec l'algorithme de De Casteljau. """
+        self.outilsCourant = self.controleur.nouvelleAlgorithmeDeDeCasteljau()          
 
     def majAffichage(self):
         """ Met a jour l'affichage.. """
@@ -76,6 +80,7 @@ class VueCourbes(object):
         toolsmenu.add_command(label="Ajouter Horizontale", command=self.callbackHorizontale)
         toolsmenu.add_command(label="Ajouter Forme développée", command=self.callbackFormeDeveloppee)
         toolsmenu.add_command(label="Ajouter Calcul matriciel", command=self.callbackCalculMatriciel)
+        toolsmenu.add_command(label="Ajouter Algorithme de De Casteljau", command=self.callbackAlgorithmeDeDeCasteljau)
         # Canvas : widget pour le dessin dans la fenetre principale
         self.canvas = tkinter.Canvas(fenetre, width=self.largeur, height=self.hauteur, bg='white')
         self.canvas.bind("<Button-1>", self.callbackButton1)
