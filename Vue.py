@@ -70,17 +70,22 @@ class VueCourbes(object):
         # menu
         menu = tkinter.Menu(fenetre)
         fenetre.config(menu=menu)
-        filemenu = tkinter.Menu(menu)
+        filemenu = tkinter.Menu(menu, tearoff=0)
         menu.add_cascade(label="Fichier", menu=filemenu)
         filemenu.add_command(label="Nouveau", command=self.callbackNouveau)
         filemenu.add_separator()
         filemenu.add_command(label="Quitter", command=fenetre.destroy)
-        toolsmenu = tkinter.Menu(menu)
+        
+        toolsmenu = tkinter.Menu(menu, tearoff=0)
         menu.add_cascade(label="Outils", menu=toolsmenu)
         toolsmenu.add_command(label="Ajouter Horizontale", command=self.callbackHorizontale)
-        toolsmenu.add_command(label="Ajouter Forme développée", command=self.callbackFormeDeveloppee)
-        toolsmenu.add_command(label="Ajouter Calcul matriciel", command=self.callbackCalculMatriciel)
-        toolsmenu.add_command(label="Ajouter Algorithme de De Casteljau", command=self.callbackAlgorithmeDeDeCasteljau)
+        
+        bezierMenu = tkinter.Menu(toolsmenu, tearoff=0)  # Création d'un sous-menu pour les courbes de Bézier
+        toolsmenu.add_cascade(label="Ajouter Courbe de Bézier", menu=bezierMenu)
+        bezierMenu.add_command(label="Calcul Matriciel", command=self.callbackCalculMatriciel)
+        bezierMenu.add_command(label="Forme Développée", command=self.callbackFormeDeveloppee)
+        bezierMenu.add_command(label="Algorithme de De Casteljau", command=self.callbackAlgorithmeDeDeCasteljau)
+        
         # Canvas : widget pour le dessin dans la fenetre principale
         self.canvas = tkinter.Canvas(fenetre, width=self.largeur, height=self.hauteur, bg='white')
         self.canvas.bind("<Button-1>", self.callbackButton1)
