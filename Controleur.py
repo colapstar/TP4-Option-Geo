@@ -32,3 +32,9 @@ class ControleurCourbes(object):
         formeDeveloppee = Modele.FormeDeveloppee()  # Assurez-vous que FormeDeveloppee est définie dans Modele
         self.ajouterCourbe(formeDeveloppee)
         return formeDeveloppee.ajouterControle
+    
+    def nouvelleCalculMatriciel(self):
+        calculMatriciel = Modele.CalculMatriciel()
+        self.ajouterCourbe(calculMatriciel)
+        return calculMatriciel.ajouterControle
+

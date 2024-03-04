@@ -1,0 +1,20 @@
+import numpy as np
+
+class CourbeBezierMatricielle(Courbe):
+    """Classe pour dessiner une courbe de Bézier en utilisant le calcul matriciel."""
+
+    def __init__(self):
+        super().__init__()
+        # Matrice de Bernstein pour une courbe cubique de Bézier
+        self.matrice_bernstein = np.array([[-1, 3, -3, 1],
+                                            [3, -6, 3, 0],
+                                            [-3, 3, 0, 0],
+                                            [1, 0, 0, 0]])
+
+    def dessinerPoints(self, dessinerPoint):
+        if len(self.controles) == 4:
+            for t in np.linspace(0, 1, 100):
+                T = np.array([t**3, t**2, t, 1])
+                points = np.array(self.controles)
+                point = T.dot(self.matrice_bernstein.dot(points))
+                dessinerPoint(point)

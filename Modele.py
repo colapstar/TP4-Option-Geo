@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Courbe(object):
     """ Classe generique definissant une courbe. """
     
@@ -58,6 +61,34 @@ class FormeDeveloppee(Courbe):
     def generate_t_values(self, num_points=100):
         """ Génère une liste de valeurs de t pour tracer la courbe. """
         return [i / (num_points - 1) for i in range(num_points)]
+    
+class CalculMatriciel(Courbe):
+    """Classe pour dessiner une courbe de Bézier en utilisant le calcul matriciel."""
+
+    def __init__(self):
+        super().__init__()
+
+    def dessinerPoints(self, dessinerPoint):
+        """Dessine la courbe de Bézier en utilisant le calcul matriciel."""
+        if len(self.controles) == 4:
+            # Matrice de calcul pour une courbe de Bézier cubique
+            matrice = np.array([[-1, 3, -3, 1],
+                                [3, -6, 3, 0],
+                                [-3, 3, 0, 0],
+                                [1, 0, 0, 0]])
+            # Points de contrôle
+            points = np.array(self.controles)
+            # Dessine les points de la courbe
+            for t in np.linspace(0, 1, 100):
+                vecteurT = np.array([t**3, t**2, t, 1])
+                point = vecteurT.dot(matrice).dot(points)
+                dessinerPoint((int(point[0]), int(point[1])))
+                
+
+                
+
+
+
                 
                 
            

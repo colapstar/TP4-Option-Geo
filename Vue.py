@@ -39,7 +39,11 @@ class VueCourbes(object):
         
     def callbackFormeDeveloppee(self):
         """ Initialise l'outil courant pour ajouter une nouvelle courbe de Bézier avec la forme développée. """
-        self.outilsCourant = self.controleur.nouvelleFormeDeveloppee()    
+        self.outilsCourant = self.controleur.nouvelleFormeDeveloppee() 
+        
+    def callbackCalculMatriciel(self):
+        """ Initialise l'outil courant pour ajouter une nouvelle courbe de Bézier utilisant le calcul matriciel. """
+        self.outilsCourant = self.controleur.nouvelleCalculMatriciel()       
 
     def majAffichage(self):
         """ Met a jour l'affichage.. """
@@ -69,8 +73,9 @@ class VueCourbes(object):
         filemenu.add_command(label="Quitter", command=fenetre.destroy)
         toolsmenu = tkinter.Menu(menu)
         menu.add_cascade(label="Outils", menu=toolsmenu)
-        toolsmenu.add_command(label="Ajouter une horizontale", command=self.callbackHorizontale)
-        toolsmenu.add_command(label="Ajouter une forme développée", command=self.callbackFormeDeveloppee)
+        toolsmenu.add_command(label="Ajouter Horizontale", command=self.callbackHorizontale)
+        toolsmenu.add_command(label="Ajouter Forme développée", command=self.callbackFormeDeveloppee)
+        toolsmenu.add_command(label="Ajouter Calcul matriciel", command=self.callbackCalculMatriciel)
         # Canvas : widget pour le dessin dans la fenetre principale
         self.canvas = tkinter.Canvas(fenetre, width=self.largeur, height=self.hauteur, bg='white')
         self.canvas.bind("<Button-1>", self.callbackButton1)
